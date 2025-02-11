@@ -59,8 +59,8 @@ if len(selected_points) != 0:
 
 
         with col3:
-            st.image("./mols/" + str(hoversrc['pep1_lib2id'].values[0]) + '.jpg',
+            st.image("./mols/" + str(hoversrc['pep1_lib2id'].values[0]) + '.png',
             caption=hoversrc['pep1'].values[0])
         with col4:
-            st.image("./mols/" + str(hoversrc['pep2_lib2id'].values[0]) + '.jpg',
+            st.image("./mols/" + str(hoversrc['pep2_lib2id'].values[0]) + '.png',
             caption=hoversrc['pep2'].values[0])
