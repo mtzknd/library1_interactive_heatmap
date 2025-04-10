@@ -44,6 +44,10 @@ with col1:
     selected_points = event.selection.points
     # st.write(selected_points)
 
+with col2:
+    st.header('Instructions')
+    st.write('Navigate and zoom heatmap using panel in the top right corner of the heatmap')
+    st.write('Click on square in heatmap for monomer structures and raw data')
 
 if len(selected_points) != 0:
     # st.write(selected_points)
@@ -51,12 +55,6 @@ if len(selected_points) != 0:
     y1 = selected_points[0]['y']
     hoversrc = df[(df['pep_x'] == x1) & (df['pep_y'] == y1)]
     if len(hoversrc) != 0:  
-        with col2:
-            st.header('Raw Data')
-            st.write(hoversrc[['pep_x', 'pep_y', 'assayplate_well', 'time0', 'time1', 'time2', 'time3', 'time4', 'time5', 'time6', 'slopes', 'rvalue', 'res act']].set_index(['pep_x', 'pep_y']))
-            st.header('Monomers')
-            col3, col4 = st.columns((1,1))
-
 
         with col3:
             st.image("./mols/" + str(hoversrc['lib2pepid_x'].values[0]) + '.png',
@@ -64,3 +62,9 @@ if len(selected_points) != 0:
         with col4:
             st.image("./mols/" + str(hoversrc['lib2pepid_y'].values[0]) + '.png',
             caption=hoversrc['pep_y'].values[0])
+        with col2:
+            st.header('Raw Data')
+            st.write(hoversrc[['pep_x', 'pep_y', 'assayplate_well', 'time0', 'time1', 'time2', 'time3', 'time4', 'time5', 'time6', 'slopes', 'rvalue', 'res act']].set_index(['pep_x', 'pep_y']))
+            st.header('Monomers')
+            col3, col4 = st.columns((1,1))
+
